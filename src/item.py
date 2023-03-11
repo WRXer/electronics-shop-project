@@ -1,3 +1,6 @@
+import csv
+
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -32,17 +35,37 @@ class Item:
         """
         self.price = int(self.price * self.pay_rate)
 
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, name):
+        if len(name) <= 10:
+            self.__name = name
+        else:
+            raise ValueError("Длина наименования товара превышает 10 символов.")
+
     @classmethod
-    def instantiate_from_csv(cls, ):
+    def instantiate_from_csv(cls):
         """
-        класс-mетод, инициализирующий экземпляры класса
+        класс-метод, инициализирующий экземпляры класса
         """
-        pass
+        with open('../src/items.csv', 'r', newline='') as csvfile:
+            file = csv.reader(csvfile, delimiter=',')
+            for i in file:
+                if "name" in i:
+                    continue
+                else:
+                    cls.all.append(i)
 
     @staticmethod
-    def string_to_number():
+    def string_to_number(quantity):
         """
         статический метод, возвращающий число из числа-строки
         """
-        pass
+        try:
+            return int(quantity)
+        except ValueError:
+            return int(quantity[0: quantity.find('.')])
 
