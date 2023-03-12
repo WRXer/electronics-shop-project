@@ -1,6 +1,7 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
 from src.item import Item
 
+import csv
 import pytest
 
 
@@ -57,3 +58,9 @@ def test_string_to_number(item):
     Тест статического метода
     """
     assert item.string_to_number("5.0") == 5
+
+def test_instantiate_from_csv():
+    """
+    Тест класс-метода, инициализирующего экземпляры класса
+    """
+    assert Item.instantiate_from_csv() is not None
