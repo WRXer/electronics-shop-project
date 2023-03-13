@@ -47,11 +47,11 @@ class Item:
             raise ValueError("Длина наименования товара превышает 10 символов.")
 
     @classmethod
-    def instantiate_from_csv(cls):
+    def instantiate_from_csv(cls, csv_path="../src/items.csv"):
         """
         класс-метод, инициализирующий экземпляры класса
         """
-        with open('../src/items.csv', 'r', newline='') as csvfile:
+        with open(csv_path, 'r', newline='') as csvfile:
             file = csv.reader(csvfile, delimiter=',')
             for i in file:
                 if "name" in i:

@@ -63,4 +63,4 @@ def test_instantiate_from_csv():
     """
     Тест класс-метода, инициализирующего экземпляры класса
     """
-    assert Item.instantiate_from_csv() is not None
+    assert Item.instantiate_from_csv(csv_path="../src/items.csv") is not None
