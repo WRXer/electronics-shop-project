@@ -1,7 +1,6 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
 from src.item import Item
 
-import csv
 import pytest
 
 
@@ -63,4 +62,5 @@ def test_instantiate_from_csv():
     """
     Тест класс-метода, инициализирующего экземпляры класса
     """
-    assert Item.instantiate_from_csv(csv_path="../src/items.csv") is not None
+    Item.instantiate_from_csv(csv_path='./tests/items.csv')
+    assert type(Item.all) is not None
