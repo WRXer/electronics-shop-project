@@ -16,6 +16,12 @@ def test_item_init(item):
     assert type(item.price) == int
     assert type(item.quantity) == int
 
+def test_repr(item):
+    assert repr(item) == "Item('test', 8000, 2)"
+
+def test_str(item):
+    assert str(item) == 'test'
+
 def test_item_init_2(item):
     """
     Тест значений класса
