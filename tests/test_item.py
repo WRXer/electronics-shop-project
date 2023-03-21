@@ -1,5 +1,6 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
 from src.item import Item
+from src.phone import Phone
 
 import pytest
 
@@ -70,3 +71,18 @@ def test_instantiate_from_csv():
     """
     Item.instantiate_from_csv(csv_path='./tests/items.csv')
     assert type(Item.all) is not None
+
+def test__add__(item):
+    """
+    Тест функции проверки допустимости операции
+    """
+    with pytest.raises(ValueError, match="Складывать можно только объекты Item и дочерние от них."):
+        Item.__add__(item, Phone)
+
+def test__add__2(item):
+    """
+    Тест функции проверки допустимости операции
+    """
+    item1 = Item('test', 8000, 10)
+    item2 = Item('test2', 4000, 10)
+    assert item1 + item2 == 20

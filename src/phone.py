@@ -23,6 +23,9 @@ class Phone(Item):
             raise ValueError("Количество физических SIM-карт должно быть целым числом больше нуля.")
 
     def __add__(self, other):
+        """
+        Функция проверки допустимости операции
+        """
         if not isinstance(other, Phone):
             raise ValueError('Складывать можно только объекты Phone.')
         return self.quantity + other.quantity
