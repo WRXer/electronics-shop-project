@@ -1,6 +1,7 @@
 class MixinKeyBoard:
+    lang = "EN"
     def __init__(self):
-        self.__language = None
+        self.__language = self.lang
 
     @property
     def language(self):
