@@ -1,4 +1,5 @@
 import csv
+from src.instantiate_csv_error import InstantiateCSVError
 
 class Item:
     """
@@ -62,13 +63,17 @@ class Item:
         """
         класс-метод, инициализирующий экземпляры класса
         """
-        with open(csv_path, 'r', newline='') as csvfile:
-            file = csv.reader(csvfile, delimiter=',')
-            for i in file:
-                if "name" in i:
-                    continue
-                else:
-                    cls.all.append(i)
+        try:
+            with open(csv_path, 'r', newline='') as csvfile:
+                file = csv.reader(csvfile, delimiter=',')
+                for i in file:
+                    if len(i) == 3:
+                        cls.all.append(i)
+                    else:
+                        raise InstantiateCSVError
+        except FileNotFoundError:
+             print("Отсутствует файл item.csv")
+
 
     @staticmethod
     def string_to_number(quantity):

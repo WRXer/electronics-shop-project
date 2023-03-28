@@ -72,6 +72,23 @@ def test_instantiate_from_csv():
     Item.instantiate_from_csv(csv_path='./tests/items.csv')
     assert type(Item.all) is not None
 
+def test_instantiate_from_csv_2():
+    """
+    Тест класс-метода, инициализирующего экземпляры класса
+    """
+    Item.instantiate_from_csv(csv_path='/tests/items.csv')
+    with pytest.raises(FileNotFoundError):
+        raise FileNotFoundError("Отсутствует файл item.csv")
+
+def test_instantiate_from_csv_3():
+    """
+    Тест класс-метода, инициализирующего экземпляры класса
+    """
+    Item.instantiate_from_csv(csv_path='./tests/items.csv')
+    with pytest.raises(FileNotFoundError):
+        raise FileNotFoundError("Отсутствует файл item.csv")
+
+
 def test__add__(item):
     """
     Тест функции проверки допустимости операции
